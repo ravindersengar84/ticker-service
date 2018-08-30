@@ -1,0 +1,49 @@
+### This is the main way to configure the application (other than annotations).
+### This file is in Yaml format but you can also configure spring boot using the traditional
+### Java properties file format. 
+
+spring.jmx:
+   enabled: false
+
+server:
+  port: 8084
+
+debug: true
+
+#todo: make sure to always enable security in production
+security:
+  basic:
+    enabled: false
+
+#management endpoints on a separate port
+management:
+  port: 8091
+  security:
+    enabled: false # management port is internal only. no need to secure it.
+
+#default project info followed by actual injected pom-specified values.
+project:
+  name: stock-ticker-service
+  version: 0.1
+  description: This is a ticker stockStats information on Java / Maven / Spring Boot (version 2.0) application 
+
+#info:
+#   build:
+#    artifact: ${project.artifactId}
+#    name: ${project.name}
+#    description: ${project.description}
+#    version: ${project.version}
+
+
+---
+spring:
+  profiles: test
+  h2:
+    console:
+      enabled: true
+  
+logging:
+  file: boot_stockStats.log
+
+
+ 
